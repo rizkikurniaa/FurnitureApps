@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furniture_apps/theme.dart';
+import 'package:furniture_apps/widgets/furniture_card.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -8,12 +9,13 @@ class HomePage extends StatelessWidget {
       backgroundColor: whiteColor,
       body: SafeArea(
         bottom: false,
-        child: ListView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(
               height: edge,
             ),
-            // TITLE/HEADER
+            // TITLE
             Padding(
               padding: EdgeInsets.only(
                 left: edge,
@@ -49,11 +51,9 @@ class HomePage extends StatelessWidget {
             SizedBox(
               height: 16,
             ),
-            //
-            SizedBox(
-              height: 30,
+            Expanded(
+              child: FurnitureCard(),
             ),
-            // NOTE : RECOMMENDED FURNITURE
           ],
         ),
       ),
