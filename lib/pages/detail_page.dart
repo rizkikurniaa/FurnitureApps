@@ -173,18 +173,50 @@ class DetailPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Icon(Icons.arrow_back_ios),
+                  CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: IconButton(
+                        icon: Icon(
+                          Icons.arrow_back,
+                          color: Colors.grey,
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        }),
                   ),
-                  Icon(Icons.favorite_border),
+                  FavoriteButton(),
                 ],
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class FavoriteButton extends StatefulWidget {
+  @override
+  _FavoriteButtonState createState() => _FavoriteButtonState();
+}
+
+class _FavoriteButtonState extends State<FavoriteButton> {
+  bool isFavorite = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      backgroundColor: Colors.white,
+      child: IconButton(
+        icon: Icon(
+          isFavorite ? Icons.favorite : Icons.favorite_border,
+          color: Colors.red,
+        ),
+        onPressed: () {
+          setState(() {
+            isFavorite = !isFavorite;
+          });
+        },
       ),
     );
   }
