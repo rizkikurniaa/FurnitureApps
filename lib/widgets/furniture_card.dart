@@ -30,43 +30,53 @@ class FurnitureCard extends StatelessWidget {
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
                     children: <Widget>[
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(10),
-                        child: Image.asset(
-                          items.imageAsset,
-                          width: 140,
-                          height: 190,
-                          fit: BoxFit.fill,
+                      Expanded(
+                        flex: 6,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset(
+                            items.imageAsset,
+                            width: MediaQuery.of(context).size.width,
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
                       ),
                       SizedBox(
                         height: 15,
                       ),
-                      Text(items.name,
-                          style: blackTextStyle.copyWith(fontSize: 18)),
+                      Expanded(
+                        child: Text(
+                          items.name,
+                          style: blackTextStyle.copyWith(fontSize: 18),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                       SizedBox(
                         height: 10,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            '\$${items.price}',
-                            style: blackTextStyle.copyWith(fontSize: 16),
-                          ),
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.star,
-                                color: Colors.orange,
-                              ),
-                              Text(
-                                '${items.rating}',
-                                style: greyTextStyle.copyWith(fontSize: 14),
-                              ),
-                            ],
-                          ),
-                        ],
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Text(
+                              '\$${items.price}',
+                              style: blackTextStyle.copyWith(fontSize: 16),
+                            ),
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.orange,
+                                ),
+                                Text(
+                                  '${items.rating}',
+                                  style: greyTextStyle.copyWith(fontSize: 14),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
